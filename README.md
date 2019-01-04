@@ -6,7 +6,7 @@ NoteChain demonstrates the eosio platform running a blockchain as a local single
 - Setting up and running a local single node testnet;
 - Setting up wallets, keys, and accounts;
 - Writing and deploying a smart contract;
-- Implementing a web based UI using React;
+- Implementing a web based UI using Vue.js;
 - Connecting the UI to the blockchain using eosjs;
 - Styling the UI using Material-UI.
 
@@ -64,14 +64,14 @@ In this section we will describe in detail each script used to run the NoteChain
 ./first_time_setup.sh
 ```
 
-Executing the above shell script verifies that docker and node.js are installed. It then downloads the `eosio/eos-dev` docker image (which contains a full version of the eosio blockchain), removes any previous instances of this docker container and installs node packages for the frontend react app.
+Executing the above shell script verifies that docker and node.js are installed. It then downloads the `eosio/eos-dev` docker image (which contains a full version of the eosio blockchain), removes any previous instances of this docker container and installs node packages for the frontend vue app.
 
 ## Initialise and start blockchain and DApp
 
 After the initialisation, two terminal windows are required, both opened in the repository directory
 
 - The **first terminal window** is for **blockchain** process.
-- The **second terminal window** is for **frontend** react app.
+- The **second terminal window** is for **frontend** vue app.
 
 **running the blockchain**
 
@@ -94,7 +94,7 @@ For the second (frontend) terminal window, running
 ```sh
 ./start_frontend.sh
 ```
-will open a browser session connecting to http://localhost:3000/ showing the react app. You can try to add or remove notes using one of the pre-created accounts with its key on the website. This react app will interact with the smart contract, performing transactions, which are written to the blockchain, which stores note data in the multi index table of the smart contract running on your local nodeos.
+will open a browser session connecting to http://localhost:3000/ showing the vue app. You can try to add or remove notes using one of the pre-created accounts with its key on the website. This vue app will interact with the smart contract, performing transactions, which are written to the blockchain, which stores note data in the multi index table of the smart contract running on your local nodeos.
 
 ## Stopping blockchain or DApp
 
@@ -109,7 +109,7 @@ This action will take a few seconds. The blockchain will be stopped.
 
 **stopping the DApp**
 
-In the second (frontend) terminal window, press `ctrl+c` on your keyboard. The frontend react app will be stopped.
+In the second (frontend) terminal window, press `ctrl+c` on your keyboard. The frontend vue app will be stopped.
 
 ## Restarting blockchain or DApp
 
@@ -124,7 +124,7 @@ The blockchain will be resumed automatically and the log will be outputted to th
 
 **restarting the DApp**
 
-In the second (frontend) terminal window, you can restart the frontend react app by executing:
+In the second (frontend) terminal window, you can restart the frontend vue app by executing:
 ```sh
 ./start_frontend.sh
 ```
@@ -159,11 +159,12 @@ noteChain // project directory
 └── frontend
     ├── node_modules // generated after npm install
     ├── public
-    │   └── index.html // html skeleton for create react app
+    │   └── index.html // html skeleton for create vue app
     ├── src
-    │   ├── pages
-    │   │   └── index.jsx // an one-pager jsx, include react component and Material-UI
-    │   └── index.js // for react-dom to render the app
+    │   ├── assets // asset directory
+    │   ├── components // components directory
+    │   └── App.vue // for vue to render the app
+    │   └── main.js // initialize vue app
     ├── package-lock.json // generated after npm install
     └── package.json // for npm packages
 
@@ -172,7 +173,7 @@ noteChain // project directory
 
 ## DApp development
 
-The DApp consists of two parts. eosio blockchain and frontend react app. These can be found in:
+The DApp consists of two parts. eosio blockchain and frontend vue app. These can be found in:
 
 - eosio_docker
     - eosio block producing node (local node) wrapped in a docker container
@@ -181,7 +182,7 @@ The DApp consists of two parts. eosio blockchain and frontend react app. These c
         - auto create 7 user accounts
 - frontend
     - node.js development environment
-        - create-react-app: http://localhost:3000/
+        - vue-cli: http://localhost:8080/
 
 Users interact with the UI in client and sign the transaction in frontend. The signed transaction (which is an `update` action in this demo DApp) is sent to the blockchain directly. After the transaction is accepted in blockchain, the note is added into the multi index table in blockchain.
 
@@ -223,7 +224,7 @@ Remember to redeploy the NoteChain contract each time you modify it using the st
 
 ## Frontend:
 
-The UI code can be found at `frontend/src/pages/index.jsx`(host environment), once you have edited this code the frontend react app compile automatically and the page on browser will be automatically refreshed. You can see the change on the browser once the browser finishes loading.
+The UI code can be found at `frontend/src/App.vue`(host environment), once you have edited this code the frontend vue app compile automatically and the page on browser will be automatically refreshed. You can see the change on the browser once the browser finishes loading.
 
 ## Docker commands
 

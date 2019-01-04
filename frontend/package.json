@@ -1,19 +1,25 @@
 {
-  "name": "frontend",
+  "name": "frontend2",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^1.5.1",
-    "eosjs": "20.0.0-beta2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "^1.1.5",
-    "text-encoding": "^0.7.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "eosjs": "20.0.0-beta2",
+    "vue": "^2.5.17",
+    "vue-material": "1.0.0-beta-10.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.3",
+    "@vue/cli-plugin-eslint": "^3.0.3",
+    "@vue/cli-service": "^3.0.3",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "vue-template-compiler": "^2.5.17"
   }
 }
